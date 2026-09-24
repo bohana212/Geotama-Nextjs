@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Preflight dimatikan (lihat tailwind.config.ts), jadi border default ditambahkan manual. */
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-width: 0;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  img {
+    max-width: 100%;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+/* Komponen admin — diawali "adm-" supaya tidak bentrok dengan class katalog (.btn, .stat, dst). */
+@layer components {
+  .adm-panel {
+    @apply rounded-2xl border border-white/10 bg-slate-900/70 p-5 shadow-xl shadow-black/30;
+  }
+  .adm-label {
+    @apply mb-1.5 block text-xs font-bold text-slate-300;
+  }
+  .adm-input {
+    @apply w-full rounded-xl border border-white/10 bg-[#07101b] px-3 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-400/70;
+  }
+  .adm-btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .adm-btn-primary {
+    @apply border-0 bg-gradient-to-br from-yellow-400 to-orange-500 text-slate-900 hover:brightness-110;
+  }
+  .adm-btn-danger {
+    @apply border-0 bg-rose-500 text-white hover:bg-rose-600;
+  }
+  .adm-icon-btn {
+    @apply inline-grid h-9 w-9 cursor-pointer place-items-center rounded-lg border border-white/10 bg-white/5 text-sm text-slate-200 transition hover:bg-white/10;
+  }
+  .adm-alert-ok {
+    @apply mb-4 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200;
+  }
+  .adm-alert-err {
+    @apply mb-4 rounded-xl border border-rose-400/25 bg-rose-400/10 px-4 py-3 text-sm text-rose-200;
+  }
+  .adm-th {
+    @apply whitespace-nowrap px-3 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-slate-400;
+  }
+  .adm-td {
+    @apply border-t border-white/10 px-3 py-3 align-middle text-sm;
+  }
+}
